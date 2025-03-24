@@ -1,0 +1,37 @@
+spring:
+  application:
+   name: email-proccessor
+  profiles:
+    active: @activatedProperties@
+  main:
+    banner-mode: off
+  task:
+    execution:
+      pool:
+        keep-alive: 60000
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: costantineyohana1999@gmail.com
+    password: amnypvftlicfwzyw
+    properties:
+      mail:
+        debug: true
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+server:
+  port: 8095
+  tomcat:
+    connection-timeout: 60000
+  shutdown: graceful
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
