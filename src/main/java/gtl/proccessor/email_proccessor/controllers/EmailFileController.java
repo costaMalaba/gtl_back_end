@@ -33,7 +33,7 @@ public class EmailFileController {
     @ResponseBody
     @PostMapping(value = "/upload-file", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ApiResponse<Object>> uploadFile(@RequestParam("file") MultipartFile file) {
-        log.info("File upload request received at: {}", file.getOriginalFilename());
+        log.info("File upload request: {}", file.getOriginalFilename());
 
         try {
             InputStream inputStream = file.getInputStream();
@@ -43,11 +43,11 @@ public class EmailFileController {
             for (Row row : sheet) {
                 if (row.getRowNum() == 0) continue;
 
+                if(row.getCell(0) == null || row.getCell(1) == null || row.getCell(2) == null) continue;
+
                 String name = row.getCell(0).getStringCellValue();
                 String email = row.getCell(1).getStringCellValue();
                 String message = row.getCell(2).getStringCellValue();
-
-                log.info("Name: {}, Email: {}, Message: {}", name, email, message);
 
                 EmailReqDto emailRequest = new EmailReqDto(name, email, message);
 
