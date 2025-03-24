@@ -1,0 +1,33 @@
+logging:
+  file:
+    name: /Users/abaa429/Desktop/Projects/forex-exchange-engine/logs/email-proccessor.log
+
+server:
+  error:
+    include-message: always
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/gtl_db
+    username: postgres
+    password: Cymstarlink@2000
+    tomcat:
+      test-while-idle: true
+      validation-query: SELECT 1
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+app:
+  x-api-key: 475b94ce-8afc-4dd8-a6c1-b84accbbdd0a
